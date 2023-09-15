@@ -58,3 +58,7 @@ func Debug(ctx context.Context, message string, fields ...zap.Field) {
 func Error(ctx context.Context, message string, fields ...zap.Field) {
 	GetGlobalLogger().WithContext(ctx).Error(message, fields...)
 }
+
+func Fatal(ctx context.Context, message string, fields ...zap.Field) {
+	GetGlobalLogger().WithContext(ctx).Fatal(message, fields...)
+}
