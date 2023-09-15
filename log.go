@@ -13,7 +13,7 @@ type Logger struct {
 
 var globalLogger *Logger
 
-func InitGlobalLogger() error {
+func StartLogger() error {
 	config := zap.NewProductionConfig()
 	config.EncoderConfig.EncodeTime = zapcore.RFC3339TimeEncoder
 
@@ -29,7 +29,7 @@ func InitGlobalLogger() error {
 
 func GetGlobalLogger() *Logger {
 	if globalLogger == nil {
-		_ = InitGlobalLogger()
+		_ = StartLogger()
 	}
 
 	return globalLogger
