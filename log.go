@@ -17,13 +17,12 @@ func StartLogger() error {
 	config := zap.NewProductionConfig()
 	config.EncoderConfig.EncodeTime = zapcore.RFC3339TimeEncoder
 
-	logger, err := config.Build()
+	logger, err := config.Build(zap.AddCaller(), zap.AddCallerSkip(1))
 	if err != nil {
 		return err
 	}
 
 	globalLogger = &Logger{Logger: logger}
-
 	return nil
 }
 
